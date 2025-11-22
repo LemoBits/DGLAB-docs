@@ -1,1 +1,0 @@
-import{_ as l,c as a,o as t,ah as i}from"./chunks/framework.BhMyqiMA.js";const h=JSON.parse('{"title":"更新日志","description":"","frontmatter":{},"headers":[],"relativePath":"changelog.md","filePath":"changelog.md"}'),o={name:"changelog.md"};function r(c,e,n,_,s,d){return t(),a("div",null,[...e[0]||(e[0]=[i("",3)])])}const m=l(o,[["render",r]]);export{h as __pageData,m as default};
