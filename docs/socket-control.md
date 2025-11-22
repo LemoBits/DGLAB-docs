@@ -36,8 +36,13 @@ flowchart LR
 
 1. 所有消息均为 json，格式：
 
-```
-{"type":"xxx","clientId":"xxx","targetId":"xxx","message":"xxx"}
+```json
+{
+  "type": "xxx",
+  "clientId": "xxx",
+  "targetId": "xxx",
+  "message": "xxx"
+}
 ```
 2. type 指令：
    1. heartbeat -> 心跳包数据
@@ -57,28 +62,48 @@ flowchart LR
 1. SOCKET 通道与终端绑定：终端或 APP 连接后生成唯一 ID，绑定 websocket 对象存储 Map，返回 ID  
    - 返回：
 
-```
-{"type":"bind","clientId":"xxxx-...","targetId":"","message":"targetId"}
+```json
+{
+  "type": "bind",
+  "clientId": "xxxx-...",
+  "targetId": "",
+  "message": "targetId"
+}
 ```
    - 终端/APP 收到 type=bind,message=targetID 即确认 clientId 为自身 ID，本地保存。
 2. 两边终端关系绑定：APP 将两边 ID 发送给 SOCKET，服务绑定存储 Map  
    - 上行：
 
-```
-{"type":"bind","clientId":"终端ID","targetId":"APPID","message":"DGLAB"}
+```json
+{
+  "type": "bind",
+  "clientId": "终端ID",
+  "targetId": "APPID",
+  "message": "DGLAB"
+}
 ```
 3. 绑定结果下发双方  
    - 下发：
 
-```
-{"type":"bind","clientId":"终端ID","targetId":"APPID","message":"200"}
+```json
+{
+  "type": "bind",
+  "clientId": "终端ID",
+  "targetId": "APPID",
+  "message": "200"
+}
 ```
 
 ## 接收强度数据（APP→第三方）
 
 APP 通道强度或上限变化时同步：  
-```
-{"type":"msg","clientId":"APPID","targetId":"终端ID","message":"strength-x+x+x+x"}
+```json
+{
+  "type": "msg",
+  "clientId": "APPID",
+  "targetId": "终端ID",
+  "message": "strength-x+x+x+x"
+}
 ```
 
 - 解释：strength-A通道强度+B通道强度+A强度上限+B强度上限
@@ -89,8 +114,13 @@ APP 通道强度或上限变化时同步：
 
 发送：
 
-```
-{"type":"msg","clientId":"终端ID","targetId":"APPID","message":"strength-x+x+x"}
+```json
+{
+  "type": "msg",
+  "clientId": "终端ID",
+  "targetId": "APPID",
+  "message": "strength-x+x+x"
+}
 ```
 
 - 通道: 1-A；2-B  
@@ -108,8 +138,13 @@ APP 通道强度或上限变化时同步：
 
 发送：
 
-```
-{"type":"msg","clientId":"终端ID","targetId":"APPID","message":"pulse-x:[\"xxxxxxxxxxxxxxxx\",...]"}
+```json
+{
+  "type": "msg",
+  "clientId": "终端ID",
+  "targetId": "APPID",
+  "message": "pulse-x:[\"xxxxxxxxxxxxxxxx\",...]"
+}
 ```
 SOCKET 转发后 APP 输出波形。
 
@@ -124,8 +159,13 @@ SOCKET 转发后 APP 输出波形。
 
 发送：
 
-```
-{"type":"msg","clientId":"终端ID","targetId":"APPID","message":"clear-x"}
+```json
+{
+  "type": "msg",
+  "clientId": "终端ID",
+  "targetId": "APPID",
+  "message": "clear-x"
+}
 ```
 通道: 1-A；2-B。
 
@@ -134,8 +174,13 @@ SOCKET 转发后 APP 输出波形。
 ## APP 反馈
 
 APP 点击不同形状按钮会上发反馈：  
-```
-{"type":"msg","clientId":"APPID","targetId":"终端ID","message":"feedback-x"}
+```json
+{
+  "type": "msg",
+  "clientId": "APPID",
+  "targetId": "终端ID",
+  "message": "feedback-x"
+}
 ```
 
 - index: A 通道 5 个按钮角标 0~4；B 通道 5 个按钮角标 5~9  
