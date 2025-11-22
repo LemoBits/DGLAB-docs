@@ -32,11 +32,22 @@ export default defineConfig({
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
-      { text: '郊狼 V3', link: '/coyote-v3' },
-      { text: '郊狼 V2', link: '/coyote-v2' },
+      {
+        text: '协议',
+        items: [
+          { text: '郊狼 V3', link: '/coyote-v3' },
+          { text: '郊狼 V2', link: '/coyote-v2' }
+        ]
+      },
       { text: '波形', link: '/waveform' },
-      { text: 'Socket', link: '/socket-control' },
-      { text: '爪印', link: '/pawprints-voltage' }
+      {
+        text: '联动控制',
+        items: [
+          { text: 'Socket 控制', link: '/socket-control' },
+          { text: 'Web 蓝牙', link: '/web-bluetooth' }
+        ]
+      },
+      { text: '硬件扩展', link: '/pawprints-voltage' }
     ],
     sidebar: [
       {
@@ -68,6 +79,20 @@ export default defineConfig({
     ],
     socialLinks: [
       { icon: 'github', link: 'https://github.com/DG-LAB' }
-    ]
+    ],
+
+    // 1. 本地搜索
+    search: {
+      provider: 'local'
+    },
+
+    // 2. 更新时间与编辑链接
+    lastUpdated: {
+      text: '最后更新于'
+    },
+    editLink: {
+      pattern: 'https://github.com/DG-LAB/DGLAB-docs/edit/main/docs/:path',
+      text: '在 GitHub 上编辑此页'
+    }
   }
 })
