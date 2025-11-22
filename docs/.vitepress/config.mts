@@ -1,9 +1,34 @@
+import { katex } from '@mdit/plugin-katex'
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   lang: 'zh-CN',
   title: 'DG-LAB 开源文档',
   description: 'DG-LAB 协议与开放接口的简明指南',
+  markdown: {
+    config: (md) => {
+      md.use(katex)
+      const fence = md.renderer.rules.fence?.bind(md.renderer.rules)
+      md.renderer.rules.fence = (tokens, idx, options, env, slf) => {
+        const token = tokens[idx]
+        const info = token.info.trim()
+        const content = token.content.trim()
+        const firstLine = content.split(/\n/)[0].trim()
+        const likelyMermaid =
+          info === 'mermaid' ||
+          firstLine === 'sequenceDiagram' ||
+          firstLine.startsWith('graph ') ||
+          firstLine === 'gantt'
+
+        if (!likelyMermaid) {
+          return fence ? fence(tokens, idx, options, env, slf) : slf.renderToken(tokens, idx, options)
+        }
+
+        const escaped = md.utils.escapeHtml(content)
+        return `<pre class="vp-mermaid">${escaped}</pre>`
+      }
+    }
+  },
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },

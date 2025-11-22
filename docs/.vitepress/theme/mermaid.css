@@ -1,0 +1,11 @@
+.vp-mermaid {
+  white-space: pre;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.mermaid.is-rendered {
+  overflow-x: auto;
+}
