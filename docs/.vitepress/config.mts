@@ -39,12 +39,6 @@ export default defineConfig({
         items: [
           { text: '爪印外部电压检测', link: '/pawprints-voltage' }
         ]
-      },
-      {
-        text: '更新记录',
-        items: [
-          { text: '更新日志', link: '/changelog' }
-        ]
       }
     ],
     socialLinks: [

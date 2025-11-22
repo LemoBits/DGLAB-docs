@@ -2,13 +2,6 @@
 
 功能仅支持郊狼脉冲主机 3.0。
 
-## 更新
-
-- time : 2025-03-15  
-  desc: 新增 ws 服务核心方法讲解-JavaScript
-- time : 2024-09-014  
-  desc: 新增 QA： [English_QA](QA/Websocket_open_source_QA_English.txt) / [Chinese_QA](QA/Websocket_open_source_QA_Chinese.txt)
-
 ## 说明
 
 SOCKET 控制功能：DG-LAB APP 通过 Socket 服务连接到外部第三方控制端，第三方通过 SOCKET 向 APP 发送指令使郊狼输出脉冲。可在局域网或公网控制，方案为 N(APP)-SOCKET-N(第三方) 的 N 对 N 模式，便于多人使用。
